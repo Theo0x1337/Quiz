@@ -1,6 +1,6 @@
 # config/routes.yaml
 
-quizz_app:
+accueil:
   path: /
   controller: App\Controller\AccueilController::accueil
 
@@ -8,3 +8,7 @@ quizz_app:
 connexion:
   path: /connexion
   controller: App\Controller\ConnexionController::connexion
+
+inscription:
+  path: /inscription
+  controller: App\Controller\InscriptionController::inscription
