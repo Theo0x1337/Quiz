@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class InscriptionController extends AbstractController
+class ConnexionController extends AbstractController
 {
-    public function inscript()
+    public function connexion()
     {
-        return $this->render('inscription.html.twig');
+        return $this->render('connexion.html.twig');
     }
 }

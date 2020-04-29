@@ -5,6 +5,6 @@ quizz_app:
   controller: App\Controller\AccueilController::accueil
 
 
-inscription:
-  path: /inscription
-  controller: App\Controller\InscriptionController::inscript
+connexion:
+  path: /connexion
+  controller: App\Controller\ConnexionController::connexion
