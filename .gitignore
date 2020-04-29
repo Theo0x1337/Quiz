@@ -142,4 +142,9 @@ composer.phar
 
 # Embedded web-server pid file
 /.web-server-pid
-
+.DS_Store
+.idea/
+composer.lock
+symfony.lock
+public/.htaccess
+composer.json
