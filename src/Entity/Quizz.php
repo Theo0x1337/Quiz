@@ -28,6 +28,31 @@ class Quizz
      */
     private $questions;
 
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    private $sousTitre;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isFeatured = false;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    private $thumbnail;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -77,6 +102,66 @@ class Quizz
                 $question->setQuizz(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSousTitre(): ?string
+    {
+        return $this->sousTitre;
+    }
+
+    public function setSousTitre(?string $sousTitre): self
+    {
+        $this->sousTitre = $sousTitre;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIsFeatured(): ?bool
+    {
+        return $this->isFeatured;
+    }
+
+    public function setIsFeatured(?bool $isFeatured): self
+    {
+        $this->isFeatured = $isFeatured;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(?string $thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }

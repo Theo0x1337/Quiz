@@ -9,12 +9,15 @@
 // src/Controller/LuckyController.php
 namespace App\Controller;
 
+use App\Entity\Quizz;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class QuizController extends AbstractController
 {
     public function quiz()
     {
-        return $this->render('quiz.html.twig');
+        return $this->render('quiz.html.twig', [
+            'quizzes' => $this->getDoctrine()->getRepository(Quizz::class)->findAll()
+        ]);
     }
 }

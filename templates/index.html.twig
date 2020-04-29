@@ -7,34 +7,29 @@
 {% block content %}
     <div class="carousel slide" data-ride="carousel" id="carousel-1">
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="jumbotron hero-nature carousel-hero" style="background-image: url('{{ asset('img/popo.png') }}');">
-                    <h1 class="hero-title">Polytech</h1>
-                    <p class="hero-subtitle">Un quiz sur les écoles du réseau Polytech !&nbsp;</p>
-                    <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Participer à ce quiz</a></p>
+            {% for key, quiz in quizzes %}
+                <div class="carousel-item {{ key == 0 ? 'active': '' }}">
+                    <div class="jumbotron carousel-hero" style="background-image: url('{{ asset('uploads/' ~ quiz.image) }}');">
+                        <h1 class="hero-title">{{ quiz.nom }}</h1>
+                        <p class="hero-subtitle">{{ quiz.sousTitre }}</p>
+                        <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Participer à ce quiz</a></p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="jumbotron hero-photography carousel-hero" style="background-image: url('{{ asset('img/annecy.jpg') }}');">
-                    <h1 class="hero-title">Annecy</h1>
-                    <p class="hero-subtitle">Un quiz sur la ville d'Annecy !</p>
-                    <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Participer à ce quiz</a></p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="jumbotron hero-technology carousel-hero" style="background-image: url('{{ asset('img/naruto.jpeg') }}');">
-                    <h1 class="hero-title">Naruto</h1>
-                    <p class="hero-subtitle">Un quiz sur l'univers de naruto !</p>
-                    <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Participer à ce quiz</a></p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
-        <ol
-                class="carousel-indicators">
-            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-1" data-slide-to="1"></li>
-            <li data-target="#carousel-1" data-slide-to="2"></li>
+        <div>
+            <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
+                <i class="fa fa-chevron-left"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
+                <i class="fa fa-chevron-right"></i>
+                <span class="sr-only">Next</span></a>
+        </div>
+        <ol class="carousel-indicators">
+            {% for key in quizzes|keys %}
+                <li data-target="#carousel-1" data-slide-to="{{ key }}" {{ key == 0 ? 'class="active"': '' }}></li>
+            {% endfor %}
         </ol>
     </div>
 {% endblock %}

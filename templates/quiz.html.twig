@@ -8,33 +8,17 @@
 {% block content %}
     <div class="container" id="cards">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4 box-shadow rounded-0"><img class="card-img-top w-100 d-block rounded-0" src="img/popoIco.png">
-                    <div class="card-body">
-                        <h4 class="card-title">Polytech</h4>
-                        <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                        <p class="card-text">Testez vos connaissances sur le réseau d'écoles d'ingénieurs Polytech, à travers des questions en tout genre !<br><br><br></p>
+            {% for quiz in quizzes %}
+                <div class="col-lg-4">
+                    <div class="card mb-4 box-shadow rounded-0"><img class="card-img-top w-100 d-block rounded-0" src="{{ asset('uploads/' ~ quiz.thumbnail) }}">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ quiz.nom }}</h4>
+                            <h6 class="text-muted card-subtitle mb-2">{{ quiz.sousTitre }}</h6>
+                            <p class="card-text">{{ quiz.description }}<br><br><br></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card mb-4 box-shadow"><img class="card-img-top w-100 d-block" src="img/annecy.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">Annecy</h4>
-                        <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                        <p class="card-text">Annecy fait partie des plus belles villes de France, et des endroits où il fait bon vivre. Repondez à ces questions et voyez à quel point vous connaissez cette ville !<br><br></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card mb-4 box-shadow"><img class="card-img-top w-100 d-block" src="img/narutoIco.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">Naruto</h4>
-                        <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                        <p class="card-text">Pillier des mangas et animes, Naruto est une référence dans le domaine. Au programme, des questions sur les personnages et l'histoire du manga !<br><br></p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
