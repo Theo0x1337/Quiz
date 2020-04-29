@@ -1,6 +1,10 @@
 # config/routes.yaml
 
-# the "app_lucky_number" route name is not important yet
-app_lucky_number:
+quizz_app:
   path: /
   controller: App\Controller\AccueilController::accueil
+
+
+inscription:
+  path: /inscription
+  controller: App\Controller\InscriptionController::inscript
