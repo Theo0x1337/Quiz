@@ -16,20 +16,25 @@
         {% block body %}
             {% block navbar %}
                 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-                    <div class="container"><a class="navbar-brand" href="#">Quizy game</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="container"><a class="navbar-brand" href="{{ path('accueil') }}">Quizy game</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse"
                              id="navcol-1">
                             <ul class="nav navbar-nav mr-auto">
-                                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Les quiz</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" href="{{ path('quiz') }}">Les quiz</a></li>
                                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">à propos</a></li>
-                            </ul><span class="navbar-text actions"> <a class="login" href="{{ path('connexion') }}">Connexion</a><a class="btn btn-light action-button" role="button" href="{{ path('inscription') }}">Inscription</a></span></div>
+                            </ul>
+                            <span class="navbar-text actions">
+                                <a class="login" href="{{ path('connexion') }}">Connexion</a>
+                                <a class="btn btn-light action-button" role="button" href="{{ path('inscription') }}">Inscription</a>
+                            </span>
+                        </div>
                     </div>
                 </nav>
             {% endblock %}
 
-            <div id="content">
+            <section id="content">
                 {% block content %}{% endblock %}
-            </div>
+            </section>
         {% endblock %}
         {% block javascripts %}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

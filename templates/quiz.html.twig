@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html.twig' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+{% block additionnal_stylesheets %}
     <link rel="stylesheet" href="css/Card-Group1-Shadow.css">
     <link rel="stylesheet" href="css/Navigation-with-Button.css">
-</head>
+{% endblock %}
 
-<body>
-<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-    <div class="container"><a class="navbar-brand" href="{{ path('accueil') }}">Quizy game</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse"
-             id="navcol-1">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Les quiz</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">à propos</a></li>
-            </ul><span class="navbar-text actions"> <a class="login" href="{{ path('connexion') }}">Log In</a><a class="btn btn-light action-button" role="button" href="{{ path('inscription') }}">Sign Up</a></span></div>
-    </div>
-</nav>
-<section>
+{% block content %}
     <div class="container" id="cards">
         <div class="row">
             <div class="col-lg-4">
@@ -53,9 +37,4 @@
             </div>
         </div>
     </div>
-</section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+{% endblock %}
