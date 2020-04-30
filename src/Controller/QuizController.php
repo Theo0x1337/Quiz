@@ -20,4 +20,9 @@ class QuizController extends AbstractController
             'quizzes' => $this->getDoctrine()->getRepository(Quizz::class)->findAll()
         ]);
     }
+
+    public function play()
+    {
+        return $this->render('play.html.twig');
+    }
 }
