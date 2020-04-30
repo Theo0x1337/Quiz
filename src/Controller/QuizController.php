@@ -28,4 +28,11 @@ class QuizController extends AbstractController
             'questions' => $questions
         ]);
     }
+
+    public function ajouterQuestion($id)
+    {
+        return $this->render('ajouterQuestion.html.twig', [
+            'id' => $id
+        ]);
+    }
 }
