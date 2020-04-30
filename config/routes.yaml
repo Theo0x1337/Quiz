@@ -13,7 +13,10 @@ inscription:
   path: /inscription
   controller: App\Controller\InscriptionController::inscription
 
-
 quiz:
   path: /quiz
   controller: App\Controller\QuizController::quiz
+
+play:
+  path: /play
+  controller: App\Controller\QuizController::play
