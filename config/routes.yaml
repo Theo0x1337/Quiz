@@ -18,5 +18,9 @@ quiz:
   controller: App\Controller\QuizController::quiz
 
 play:
-  path: /play/{id}
+  path: /{id}/play
   controller: App\Controller\QuizController::play
+
+ajouter-question:
+  path: /{id}/ajouter-question
+  controller: App\Controller\QuizController::ajouterQuestion
