@@ -18,5 +18,5 @@ quiz:
   controller: App\Controller\QuizController::quiz
 
 play:
-  path: /play
+  path: /play/{id}
   controller: App\Controller\QuizController::play
