@@ -3,8 +3,12 @@
 {% block content %}
 
     <h2>Ajouter une question</h2>
+
     <div class="mb-4 box-shadow rounded-0">
-        <form action="" method="post">
+        <form action="/" method="post">
+
+            <input type="hidden" class="form-control" id="idQuiz" value="{{ id }}">
+
             <div class="form-group row">
                 <label for="question" class="col-sm-2 col-form-label">Question *</label>
                 <div class="col-sm-10">
