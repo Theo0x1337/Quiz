@@ -28,3 +28,4 @@ ajouter-question:
 valider-question:
   path: /validationQuestion
   controller: App\Controller\QuizController::validerQuestion
+  methods: GET
