@@ -44,13 +44,12 @@ class QuizController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
 
-        $idQuiz = $request->query->get('idQuiz');
-        $question = $request->query->get('question');
-        var_dump($question);
-        $bonneRep = $request->query->get('bonneRep');
-        $mauvaiseRep1 = $request->query->get('mauvaiseRep1');
-        $mauvaiseRep2 = $request->query->get('mauvaiseRep2');
-        $mauvaiseRep3 = $request->query->get('mauvaiseRep3');
+        $idQuiz = $request->request->get('idQuiz');
+        $question = $request->request->get('question');
+        $bonneRep = $request->request->get('bonneRep');
+        $mauvaiseRep1 = $request->request->get('mauvaiseRep1');
+        $mauvaiseRep2 = $request->request->get('mauvaiseRep2');
+        $mauvaiseRep3 = $request->request->get('mauvaiseRep3');
 
 
         $objectQuestion = new Question();
@@ -71,7 +70,7 @@ class QuizController extends AbstractController
         $objectMauvaiseReponse1->setIsTrue(False);
         $entityManager->persist($objectMauvaiseReponse1);
 
-        if (isset($mauvaiseRep2)){
+        if (isset($mauvaiseRep2) && $mauvaiseRep2!=null){
             $objectMauvaiseReponse2 = new Reponse();
             $objectMauvaiseReponse2->setText($mauvaiseRep2);
             $objectMauvaiseReponse2->setQuestion($objectQuestion);
@@ -79,7 +78,7 @@ class QuizController extends AbstractController
             $entityManager->persist($objectMauvaiseReponse2);
         }
 
-        if (isset($mauvaiseRep3)){
+        if (isset($mauvaiseRep3) && $mauvaiseRep3!=null){
             $objectMauvaiseReponse3 = new Reponse();
             $objectMauvaiseReponse3->setText($mauvaiseRep3);
             $objectMauvaiseReponse3->setQuestion($objectQuestion);
@@ -89,7 +88,7 @@ class QuizController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('accueil');
+        return $this->render('validerQuestion.html.twig');
     }
 
 
