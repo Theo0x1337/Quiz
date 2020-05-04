@@ -35,7 +35,8 @@ class QuizController extends AbstractController
     public function ajouterQuestion($id)
     {
         return $this->render('ajouterQuestion.html.twig', [
-            'id' => $id
+            'id' => $id,
+            'isQuestionAdded' => False
         ]);
     }
 
@@ -88,7 +89,10 @@ class QuizController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->render('validerQuestion.html.twig');
+        return $this->render('ajouterQuestion.html.twig', [
+            'id' => $idQuiz,
+            'isQuestionAdded' => True
+        ]);
     }
 
 
