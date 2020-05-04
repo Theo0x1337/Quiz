@@ -12,4 +12,9 @@ class AccueilController extends AbstractController
         $quizzes = $this->getDoctrine()->getRepository(Quizz::class)->findBy(['isFeatured' => true]);
         return $this->render('index.html.twig', ['quizzes' => $quizzes]);
     }
+
+    public function aPropos()
+    {
+        return $this->render('aPropos.html.twig');
+    }
 }
