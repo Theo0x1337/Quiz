@@ -35,4 +35,23 @@ class QuizController extends AbstractController
             'id' => $id
         ]);
     }
+
+    public function validerQuestion()
+    {
+        $question = $_POST['question'];
+        $bonneRep = $_POST['bonneRep'];
+        $mauvaiseRep1 = $_POST['mauvaiseRep1'];
+
+        if(isset($_POST['mauvaiseRep2'])){
+            $mauvaiseRep2 = $_POST['mauvaiseRep2'];
+        }
+        if(isset($_POST['mauvaiseRep3'])){
+            $mauvaiseRep3 = $_POST['mauvaiseRep3'];
+        }
+
+        
+        return $this->render('validerQuestion.html.twig');
+    }
+
+
 }
