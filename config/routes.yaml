@@ -4,6 +4,9 @@ accueil:
   path: /
   controller: App\Controller\AccueilController::accueil
 
+aPropos:
+  path: /aPropos
+  controller: App\Controller\AccueilController::aPropos
 
 connexion:
   path: /connexion
