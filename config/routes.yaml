@@ -24,3 +24,7 @@ play:
 ajouter-question:
   path: /{id}/ajouter-question
   controller: App\Controller\QuizController::ajouterQuestion
+
+valider-question:
+  path: /validationQuestion
+  controller: App\Controller\QuizController::validerQuestion
