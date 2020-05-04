@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @UniqueEntity(fields="email", message="Email déjà pris")
  */
 class Utilisateur implements UserInterface
 {
@@ -29,11 +32,13 @@ class Utilisateur implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=50, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mdp;
 
@@ -46,6 +51,12 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * Mot de passe en claire
+     * @var string
+     */
+    private $mdpClair = '';
 
     public function getId(): ?int
     {
@@ -60,7 +71,6 @@ class Utilisateur implements UserInterface
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -72,7 +82,6 @@ class Utilisateur implements UserInterface
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -84,7 +93,6 @@ class Utilisateur implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -96,7 +104,6 @@ class Utilisateur implements UserInterface
     public function setMdp(string $mdp): self
     {
         $this->mdp = $mdp;
-
         return $this;
     }
 
@@ -108,19 +115,32 @@ class Utilisateur implements UserInterface
     public function setScore(string $score): self
     {
         $this->score = $score;
-
         return $this;
     }
 
-    public function getIsAdmin(): ?bool
+    public function setRoles(array $roles): self
     {
-        return $this->isAdmin;
+        $this->roles = $roles;
+        return $this;
     }
 
-    public function setIsAdmin(bool $isAdmin): self
+    public function addRole(string $role): self
     {
-        $this->isAdmin = $isAdmin;
+        $this->roles[] = $role;
+        return $this;
+    }
 
+    public function getMdpClair(): ?string
+    {
+        return $this->mdpClair;
+    }
+
+    /**
+     * @param string $mdpClair
+     */
+    public function setMdpClair(string $mdpClair): self
+    {
+        $this->mdpClair = $mdpClair;
         return $this;
     }
 
@@ -167,6 +187,6 @@ class Utilisateur implements UserInterface
      */
     public function eraseCredentials()
     {
-
+        $this->mdpClair= '';
     }
 }

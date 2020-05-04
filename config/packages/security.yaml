@@ -16,9 +16,12 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
-            form_login:
-                login_path: connexion
-                check_path: connexion
+#            form_login:
+#                login_path: connexion
+#                check_path: connexion
+            logout:
+                path: deconnexion
+                target: accueil
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -33,7 +36,7 @@ security:
           roles: ROLE_ADMIN
         - path: ^/profile
           roles: ROLE_USER
-        - path: ^/connexion$
+        - path: ^/(connexion|inscription)$
           roles: IS_AUTHENTICATED_ANONYMOUSLY
     encoders:
         # use your user class name here

@@ -63,6 +63,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             Security::LAST_USERNAME,
             $credentials['email']
         );
+
+        return $credentials;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)

@@ -21,6 +21,7 @@ class UtilisateurFixtures extends Fixture
         $user = new Utilisateur();
         $user->setPrenom('Super');
         $user->setNom('User');
+        $user->setRoles(["ROLE_ADMIN"]);
         $user->setEmail('admin@localhost');
         $user->setMdp($this->passwordEncoder->encodePassword(
              $user,
