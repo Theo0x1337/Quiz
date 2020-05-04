@@ -1,7 +1,38 @@
 {% extends 'base.html.twig' %}
 
+
+{% block additionnal_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/play.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var data = {{ questions|json_encode() }}
+        console.log(data);
+    </script>
+{% endblock %}
+
 {% block content %}
 
-    <p>hello :)</p>
+    <div class="container">
+        <h1 id="toptitle">Question</h1>
+        <div class="row">
+            <div class="col">
+                <h1 class="question">Réponse 1</h1><input type="checkbox"></div>
+            <div class="col">
+                <h1 class="question">Réponse 2</h1><input type="checkbox"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 class="question">Réponse 3</h1><input type="checkbox"></div>
+            <div class="col">
+                <h1 class="question">Réponse 4</h1><input type="checkbox"></div>
+        </div>
+        <div class="row">
+            <div class="col"><button class="btn btn-primary" type="button">Précédent</button></div>
+            <div class="col"><button class="btn btn-primary" type="button">Suivant</button></div>
+        </div>
+    </div>
 
 {% endblock %}

@@ -1,0 +1,16 @@
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+  text-align: center;
+}
+
+.question {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.col {
+}
+
+input[type=checkbox], input[type=radio] {
+  margin-bottom: 10%;
+}
+
