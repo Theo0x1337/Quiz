@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -42,19 +43,9 @@ class Utilisateur
     private $score = 0;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="json")
      */
-    private $isAdmin = false;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $image;
+    private $roles = [];
 
     public function getId(): ?int
     {
@@ -133,27 +124,49 @@ class Utilisateur
         return $this;
     }
 
-    public function getDescription(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->description;
+        return (string) $this->email;
     }
 
-    public function setDescription(?string $description): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->description = $description;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
 
-        return $this;
+        return array_unique($roles);
     }
 
-    public function getImage(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
     {
-        return $this->image;
+        return (string) $this->mdp;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        $this->image = $image;
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
 
-        return $this;
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+
     }
 }

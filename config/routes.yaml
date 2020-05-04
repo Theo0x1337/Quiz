@@ -7,11 +7,22 @@ accueil:
 
 connexion:
   path: /connexion
-  controller: App\Controller\ConnexionController::connexion
+  methods: GET|HEAD
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template: security/connexion.html.twig
 
 inscription:
   path: /inscription
-  controller: App\Controller\InscriptionController::inscription
+  methods: GET|HEAD
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template: security/inscription.html.twig
+inscription-post:
+  path: /inscription
+  methods: POST
+  controller: App\Controller\SecurityController::inscription
+
 
 
 quiz:
