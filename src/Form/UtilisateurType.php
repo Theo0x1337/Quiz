@@ -19,13 +19,13 @@ class UtilisateurType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, ['label' => 'Email'])
-            ->add('nom', TextType::class, ['label' => 'Nom'])
-            ->add('prenom', TextType::class, ['label' => 'Prénom'])
+            ->add('prenom', TextType::class, ['label' => 'First name'])
+            ->add('nom', TextType::class, ['label' => 'Last name'])
             ->add('mdpClair', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmez le mot de passe'],
+                'first_options'  => ['label' => 'Password'],
+                'second_options' => ['label' => 'Confirm password'],
             ])
         ;
     }

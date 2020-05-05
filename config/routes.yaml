@@ -15,19 +15,17 @@ deconnexion:
   path: /deconnexion
   methods: GET
 
+#inscription:
+#  path: /inscription
+#  methods: GET|HEAD
+#  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+#  defaults:
+#    template: security/inscription.html.twig
+#inscription-post:
 inscription:
   path: /inscription
-  methods: GET|HEAD
-  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
-  defaults:
-    template: security/inscription.html.twig
-inscription-post:
-  path: /inscription
-  methods: POST
+  methods: GET|HEAD|POST
   controller: App\Controller\SecurityController::inscription
-testForm:
-  path: /test
-  controller: App\Controller\SecurityController::testForm
 
 
 

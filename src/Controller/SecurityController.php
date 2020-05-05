@@ -3,13 +3,15 @@ namespace App\Controller;
 
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class SecurityController extends AbstractController
 {
-    public function inscription(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function inscriptionOld(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
 
         if (!filter_var($request->request->get('email')?? '', FILTER_VALIDATE_EMAIL)) {
@@ -44,29 +46,32 @@ class SecurityController extends AbstractController
         return $this->render('security/inscription.html.twig', ['erreur' => $erreur]);
     }
 
-    public function testForm(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function inscription(LoginFormAuthenticator $authenticator, GuardAuthenticatorHandler $guardHandler, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $utilisateur = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
 
-        if ($form->isSubmitted() && $form->isValid()) {
 
-            // 3) Encode the password (you could also do this via Doctrine listener)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($utilisateur, $utilisateur->getMdpClair());
             $utilisateur->setMdp($password);
 
-            // 4) save the User!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($utilisateur);
             $entityManager->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
+            // TODO envoie d'un email
 
-            return $this->redirectToRoute('connexion');
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $utilisateur,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
         }
 
-        return $this->render('security/test.html.twig', [
+        return $this->render('security/inscription.html.twig', [
             'form' => $form->createView(),
         ]);
     }

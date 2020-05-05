@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'form/security.html.twig' %}
 
 {% block additionnal_stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/Registration-Form-with-Photo.css') }}">
@@ -15,23 +16,28 @@
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder"></div>
-            <form method="post">
-                <h2 class="text-center"><strong>Créez un compte !</strong></h2>
-                <div id="error">
-                    {% if erreur is defined %}
-                        <div class="alert alert-danger" role="alert">
-                            {{ erreur }}
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="form-group"><input class="form-control" type="email" name="email" id="email" placeholder="Email" required></div>
-                <div class="form-group"><input class="form-control" name="name" id="name" placeholder="Nom"></div>
-                <div class="form-group"><input class="form-control" name="surname" id="surname" placeholder="Prénom" required></div>
-                <div class="form-group"><input class="form-control" id="password" type="password" name="password" placeholder="mot de passe" required></div>
-                <div class="form-group"><input class="form-control" id="password-repeat" type="password" name="password-repeat" placeholder="confirmez mot de passe"></div>
-                <div class="form-group"><button class="btn btn-primary btn-block" id="submit">Inscription</button></div>
-                <a class="already" href="#">Déja enregistré ? connectez vous ici</a>
-            </form>
+            {{ form_start(form) }}
+            <h2 class="text-center"><strong>Créez un compte !</strong></h2>
+            <div id="error">
+                {% if not form.vars.valid %}
+                    <div class="alert alert-error">
+                        {% for children in form.children %}
+                            {% if not children.vars.valid %}
+                                {{ form_errors(children) }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if erreur is defined %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ erreur }}
+                    </div>
+                {% endif %}
+            </div>
+            {{- form_rest(form) -}}
+            <div class="form-group"><button class="btn btn-primary btn-block" id="submit">Inscription</button></div>
+            <a class="already" href="#">Déja enregistré ? connectez vous ici</a>
+            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}
