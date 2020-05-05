@@ -10,11 +10,18 @@ aPropos:
 
 connexion:
   path: /connexion
-  controller: App\Controller\ConnexionController::connexion
-
+  methods: GET|HEAD|POST
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template: security/connexion.html.twig
+deconnexion:
+  path: /deconnexion
+  methods: GET
 inscription:
   path: /inscription
-  controller: App\Controller\InscriptionController::inscription
+  methods: GET|HEAD|POST
+  controller: App\Controller\SecurityController::inscription
+
 
 quiz:
   path: /quiz

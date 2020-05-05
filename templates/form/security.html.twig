@@ -1,0 +1,55 @@
+{% use "bootstrap_4_layout.html.twig" %}
+
+{# Widgets #}
+{% block form_widget_simple -%}
+    {% if type is not defined or type != 'hidden' %}
+        {%- set attr = attr|merge({class: (attr.class|default('') ~ (type|default('') == 'file' ? ' custom-file-input' : ' form-control'))|trim}) -%}
+    {% endif %}
+    {%- if type is defined and (type == 'range' or type == 'color') %}
+        {# Attribute "required" is not supported #}
+        {%- set required = false -%}
+    {% endif %}
+    {%- set type = type|default('text') -%}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} {{ block('form_label') }} >
+{%- endblock form_widget_simple %}
+
+
+{# Labels #}
+{%- block form_label -%}
+    {%- if type is not defined or type != 'hidden' -%}
+        {%- if label is not same as(false) -%}
+            {% if label is empty -%}
+                {%- if label_format is not empty -%}
+                    {% set label = label_format|replace({
+                        '%name%': name,
+                        '%id%': id,
+                    }) %}
+                {%- else -%}
+                    {% set label = name|humanize %}
+                {%- endif -%}
+            {%- endif -%}
+            {%- if translation_domain is same as(false) -%}
+                placeholder="{{ label|raw }}"
+            {%- else -%}
+                placeholder="{{ label|trans(label_translation_parameters, translation_domain)|raw }}"
+            {%- endif -%}
+        {%- endif -%}
+    {%- endif -%}
+{%- endblock form_label -%}
+
+
+{# Support #}
+{% block form_row -%}
+    {%- if compound is defined and compound -%}
+        {%- set element = 'fieldset' -%}
+    {%- endif -%}
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+    {%- endif -%}
+    <{{ element|default('div') }}{% with {attr: row_attr|merge({class: (row_attr.class|default('') ~ ' form-group')|trim})} %}{{ block('attributes') }}{% endwith %}>
+{#    {{- form_label(form) -}}#}
+    {{- form_widget(form, widget_attr) -}}
+    {{- form_help(form) -}}
+    </{{ element|default('div') }}>
+{%- endblock form_row %}

@@ -3,11 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @UniqueEntity(fields="email", message="The email {{ value }} is already taken")
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -28,11 +32,13 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=50, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mdp;
 
@@ -42,19 +48,15 @@ class Utilisateur
     private $score = 0;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="json")
      */
-    private $isAdmin = false;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * Mot de passe en claire
+     * @var string
      */
-    private $description;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $image;
+    private $mdpClair = '';
 
     public function getId(): ?int
     {
@@ -69,7 +71,6 @@ class Utilisateur
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -81,7 +82,6 @@ class Utilisateur
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -93,7 +93,6 @@ class Utilisateur
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -105,7 +104,6 @@ class Utilisateur
     public function setMdp(string $mdp): self
     {
         $this->mdp = $mdp;
-
         return $this;
     }
 
@@ -117,43 +115,78 @@ class Utilisateur
     public function setScore(string $score): self
     {
         $this->score = $score;
-
         return $this;
     }
 
-    public function getIsAdmin(): ?bool
+    public function setRoles(array $roles): self
     {
-        return $this->isAdmin;
-    }
-
-    public function setIsAdmin(bool $isAdmin): self
-    {
-        $this->isAdmin = $isAdmin;
-
+        $this->roles = $roles;
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function addRole(string $role): self
     {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
+        $this->roles[] = $role;
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getMdpClair(): ?string
     {
-        return $this->image;
+        return $this->mdpClair;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @param string $mdpClair
+     */
+    public function setMdpClair(string $mdpClair): self
     {
-        $this->image = $image;
-
+        $this->mdpClair = $mdpClair;
         return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->mdp;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        $this->mdpClair= '';
     }
 }

@@ -10,10 +10,14 @@ Quiz
     ```
 1. Install dependencies
     ```shell script
+    # Either
     php composer.phar install
+    # Or if you have composer CLI installed
+    composer install 
     ```
 1. Set up database
     ```shell script
     php bin/console doctrine:database:create # if database doesn't exist
     php bin/console doctrine:migrations:migrate
+    php bin/console doctrine:fixtures:load
     ```
