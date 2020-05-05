@@ -1,7 +1,7 @@
 .register-photo {
   background: url('../img/login.jpg') #f1f7fc;
   padding: 80px 0;
-  min-height: calc(100vh - 88px);
+  min-height: calc(100vh - 72px);
 }
 
 .register-photo .image-holder {

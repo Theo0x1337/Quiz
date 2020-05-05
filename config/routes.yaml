@@ -4,9 +4,11 @@ accueil:
   path: /
   controller: App\Controller\AccueilController::accueil
 
-aPropos:
+a_propos:
   path: /aPropos
-  controller: App\Controller\AccueilController::aPropos
+  controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    template:  'a_propos.html.twig'
 
 # Security
 connexion:
