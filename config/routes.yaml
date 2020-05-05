@@ -4,7 +4,7 @@ accueil:
   path: /
   controller: App\Controller\AccueilController::accueil
 
-
+# Security
 connexion:
   path: /connexion
   methods: GET|HEAD|POST
@@ -20,19 +20,32 @@ inscription:
   controller: App\Controller\SecurityController::inscription
 
 
+# Admin
+admin:
+  path: /admin/
+  controller: App\Controller\AdminController::index
+
+# Main site
 quiz:
   path: /quiz
   controller: App\Controller\QuizController::quiz
+  methods: GET|HEAD
 
 play:
-  path: /{id}/play
+  path: /quiz/{id}/play
   controller: App\Controller\QuizController::play
+  methods: GET|HEAD
 
 ajouter-question:
-  path: /{id}/ajouter-question
+  path: /quiz/{id}/ajouter-question
   controller: App\Controller\QuizController::ajouterQuestion
 
 valider-question:
   path: /validationQuestion
   controller: App\Controller\QuizController::validerQuestion
   methods: POST
+
+profile:
+  path: /profile
+  controller: App\Controller\ProfileController::index
+  methods: GET|HEAD

@@ -19,7 +19,7 @@ class QuizController extends AbstractController
 {
     public function quiz()
     {
-        return $this->render('quiz.html.twig', [
+        return $this->render('quiz/quiz.html.twig', [
             'quizzes' => $this->getDoctrine()->getRepository(Quizz::class)->findAll()
         ]);
     }
@@ -27,14 +27,14 @@ class QuizController extends AbstractController
     public function play($id)
     {
         $questions = $this->getDoctrine()->getRepository(Quizz::class)->find($id)->getQuestions();
-        return $this->render('play.html.twig', [
+        return $this->render('quiz/play.html.twig', [
             'questions' => $questions
         ]);
     }
 
     public function ajouterQuestion($id)
     {
-        return $this->render('ajouterQuestion.html.twig', [
+        return $this->render('quiz/ajouterQuestion.html.twig', [
             'id' => $id
         ]);
     }
@@ -88,7 +88,7 @@ class QuizController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->render('validerQuestion.html.twig');
+        return $this->render('quiz/validerQuestion.html.twig');
     }
 
 

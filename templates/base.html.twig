@@ -24,8 +24,13 @@
                                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">à propos</a></li>
                             </ul>
                             <span class="navbar-text actions">
-                                <a class="login" href="{{ path('connexion') }}">Connexion</a>
-                                <a class="btn btn-light action-button" role="button" href="{{ path('inscription') }}">Inscription</a>
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    <a class="login" href="{{ path('deconnexion') }}">Déconexion</a>
+                                    <a class="btn btn-primary action-button" role="button" href="{{ path('profile') }}">Profile</a>
+                                {% else %}
+                                    <a class="login" href="{{ path('connexion') }}">Connexion</a>
+                                    <a class="btn btn-light action-button" role="button" href="{{ path('inscription') }}">Inscription</a>
+                                {% endif %}
                             </span>
                         </div>
                     </div>
