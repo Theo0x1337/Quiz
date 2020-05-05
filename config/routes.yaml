@@ -14,21 +14,25 @@ connexion:
 deconnexion:
   path: /deconnexion
   methods: GET
-
-#inscription:
-#  path: /inscription
-#  methods: GET|HEAD
-#  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
-#  defaults:
-#    template: security/inscription.html.twig
-#inscription-post:
 inscription:
   path: /inscription
   methods: GET|HEAD|POST
   controller: App\Controller\SecurityController::inscription
 
 
-
 quiz:
   path: /quiz
   controller: App\Controller\QuizController::quiz
+
+play:
+  path: /{id}/play
+  controller: App\Controller\QuizController::play
+
+ajouter-question:
+  path: /{id}/ajouter-question
+  controller: App\Controller\QuizController::ajouterQuestion
+
+valider-question:
+  path: /validationQuestion
+  controller: App\Controller\QuizController::validerQuestion
+  methods: POST

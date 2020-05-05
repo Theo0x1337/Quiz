@@ -6,6 +6,9 @@
 {% endblock %}
 
 {% block content %}
+
+
+
     <div class="container" id="cards">
         <div class="row">
             {% for quiz in quizzes %}
@@ -15,10 +18,27 @@
                             <h4 class="card-title">{{ quiz.nom }}</h4>
                             <h6 class="text-muted card-subtitle mb-2">{{ quiz.sousTitre }}</h6>
                             <p class="card-text">{{ quiz.description }}<br><br><br></p>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <a href="{{ path('play',{'id':quiz.id}) }}">
+                                        <button class="btn btn-primary btn-block">Jouer</button>
+                                    </a>
+                                </div>
+                                <div class="col-8">
+                                    <a href="{{ path('ajouter-question',{'id':quiz.id}) }}">
+                                        <button class="btn btn-secondary btn-block">Ajouter une question</button>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             {% endfor %}
+
+            <bouton class="btn btn-primary btn-block text-center">Ajouter votre propre quiz !</bouton>
         </div>
     </div>
+
 {% endblock %}
