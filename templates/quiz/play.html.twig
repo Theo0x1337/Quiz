@@ -58,13 +58,15 @@
                 if (result.value) {
                     const answers = JSON.stringify(result.value);
                     var rep = JSON.parse(answers);
-                    console.log(rep);
                     Swal.fire({
                         title: 'Quiz terminé !',
                         confirmButtonText: 'Passer aux réponses!'
                     })
                     document.getElementById("pretaj").style.display = 'none';
                     document.getElementById("questrep").style.display = 'block';
+
+                    var nbBonneRep = 0;
+
 
                     for (let i = 0;i<bonneRep.length;i++) {
 
@@ -80,8 +82,23 @@
                         TD2.appendChild(TXT2);
                         TR.appendChild(TD2);
 
+                        if (bonneRep[i] == rep[i]){
+                            nbBonneRep = nbBonneRep+1;
+                        }
+
                         document.getElementById('bodTable').appendChild(TR);
                     }
+
+                    document.getElementById("score").innerText = "Votre score : "+nbBonneRep+'/'+bonneRep.length;
+
+                    console.log(nbBonneRep/bonneRep.length);
+
+                    if (nbBonneRep >= 2.5){
+                        document.getElementById("img").src = "{{ asset('img/goodjob.png') }}";
+                    }else{
+                        document.getElementById("img").src = "{{ asset('img/badjob.png') }}";
+                    }
+
                 }
             })
 
@@ -132,7 +149,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <h1>Votre score :</h1><img>
+                    <h1 id="score">Votre score :</h1>
+                    <img id="img">
                     <p>Pas mal pour un noob</p>
                 </div>
             </div>
