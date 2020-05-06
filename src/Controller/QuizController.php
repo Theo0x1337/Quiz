@@ -26,9 +26,29 @@ class QuizController extends AbstractController
 
     public function play($id)
     {
-        $questions = $this->getDoctrine()->getRepository(Quizz::class)->find($id)->getQuestions();
+        $questionsObj = $this->getDoctrine()->getRepository(Quizz::class)->find($id)->getQuestions();
+        $questions = [];
+        $reponses = [];
+
+        foreach ($questionsObj as $question) {
+            foreach ($question->getReponses() as $reponse) {
+                $reponses[] = [
+                    'id' => $reponse->getId(),
+                    'text' => $reponse->getText(),
+                    'vrai' => $reponse->getIsTrue()
+                ];
+            }
+
+            $questions[] = [
+                'id' => $question->getId(),
+                'text' => $question->getText(),
+                'reponses' => $reponses
+            ];
+        }
+
         return $this->render('quiz/play.html.twig', [
-            'questions' => $questions
+            'questions' => $questions,
+            'reponses' => $reponses
         ]);
     }
 
