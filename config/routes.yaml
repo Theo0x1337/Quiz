@@ -5,7 +5,7 @@ accueil:
   controller: App\Controller\AccueilController::accueil
 
 a_propos:
-  path: /aPropos
+  path: /a-propos
   controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
   defaults:
     template:  'a_propos.html.twig'

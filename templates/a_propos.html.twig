@@ -1,16 +1,120 @@
 {% extends 'base.html.twig' %}
 
+{% block additionnal_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/fontawesome5-overrides.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/a_propos.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/jarallax@1/dist/jarallax.min.js"></script>
+{% endblock %}
+
 {% block content %}
-
-    <div class="container">
-        <h1 class="d-sm-flex justify-content-sm-center"><br><strong>A propos de nous</strong><br><br></h1>
-        <p class="text-justify" style="margin-top: 22px;">Nous sommes 3 étudiants de Polytech Annecy qui avons décidé de créer notre propre sujet de TP. Et voici le résultat, un site permettant de jouer à des quiz, d'ajouter ses propres questions, pour résumer : S'AMUSER !<br><br>Les étudiants en question
-            :&nbsp;<br><a href="https://github.com/TheoBernardin/" target="_blank">Théo BERNARDIN</a><br><a href="https://github.com/nowtryz" target="_blank">Damien DJOMBY</a><br><a href="https://github.com/enzomasson25" target="_blank">Enzo MASSON</a><br><br>
-            <a
-                    href="https://github.com/TheoBernardin/Quiz" target="_blank"><br>Lien du GitHub du projet :)<br><br></a>
-        </p>
+    <div class="project">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="intro">
+                        <h2 class="text-center">Le projet</h2>
+                        <p class="text-justify">
+                            Dans le cadre de notre 1ère année de cycle ingénieur, il nous a étédemandé de créer un site
+                            web <span class="font-italic">responsive</span> comportant un menu constitué de plusieurs
+                            niveaux, un carrousel d'images, une ou plusieurs vidéos, des transitions ou animations CSS,
+                            des échanges d'informations avec la base de données. Voici notre réalisation.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 image-sidebar">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 100%;"><img src="{{ asset('img/Logo_Polytech_Annecy_Chambery.svg') }}"></div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    {{ block('content', 'credit.html.twig') }}
-
+    <div data-jarallax class="team-boxed jarallax">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">L'équipe</h2>
+                <p class="text-center">Nous sommes 3 étudiants de Polytech Annecy qui avons décidé de créer notre propre sujet de TP. Et voici le résultat, un site permettant de jouer à des quiz, d'ajouter ses propres questions, pour résumer : S'AMUSER !<br></p>
+            </div>
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img class="rounded-circle" src="{{ asset('img/bernardin.jpg') }}">
+                        <h3 class="name">Théo Bernardin</h3>
+                        <p class="title">Frontend / Jeu</p>
+                        <div class="social">
+                            <a href="https://www.linkedin.com/in/theo-bernardin/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/TheoBernardin/" target="_blank"><i class="fa fa-github"></i></a>
+                            <a href="https://TheoBernardin.github.io" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img class="rounded-circle" src="{{ asset('img/masson.jpg') }}">
+                        <h3 class="name">Enzo Masson</h3>
+                        <p class="title">Frontend / Backend</p>
+                        <div class="social">
+                            <a href="https://www.linkedin.com/in/enzo-masson-102694150/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/enzomasson25" target="_blank"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img class="rounded-circle" src="{{ asset('img/djomby.jpg') }}">
+                        <h3 class="name">Damien Djomby</h3>
+                        <p class="title">Backend / Securité</p>
+                        <div class="social">
+                            <a href="#https://www.linkedin.com/in/damiendjomby/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/nowtryz" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/nowtryz" target="_blank"><i class="fa fa-github"></i></a>
+                            <a href="https://gitlab.com/nowtryz" target="_blank"><i class="fa fa-gitlab"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="credits">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Crédits iconographiques</h2>
+                <p class="text-center">Nous n'utilisons, au sein de ce projet, que des images libres de droits. retrouvez ici les crédits pour ces différentes images.<br></p>
+            </div>
+            <div class="row justify-content-md-center images">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-image d-flex align-items-center">
+                            <img class="card-img-top w-100 d-block" src="{{ asset('img/login.jpg') }}">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Page de connexion</h4>
+                            <p class="card-text">
+                                <a href="https://www.freeimages.com/photo/sunday-s-crossword-1238083">Photo</a> de <a href="https://freeimages.com/photographer/jaylopez-61821">jaylopez</a> prise sur <a href="https://freeimages.com/">FreeImages</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-image d-flex align-items-center">
+                            <img class="card-img-top w-100 d-block" src="{{ asset('img/register.jpg') }}">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Page d'incription</h4>
+                            <p class="card-text">
+                                <a href="https://www.freeimages.com/photo/quiz-2-1189415">Photo</a> de <a href="/photographer/Avolore-49063">Tory Byrne</a> prise sur <a href="https://freeimages.com/">FreeImages</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
