@@ -9,7 +9,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://unpkg.com/jarallax@1/dist/jarallax.min.js"></script>
+    <script src="https://unpkg.com/jarallax@1/dist/jarallax.min.js" type="application/javascript"></script>
+    <script type="application/javascript">$(() => $('[data-toggle="tooltip"]').tooltip())</script>
 {% endblock %}
 
 {% block content %}
@@ -46,10 +47,10 @@
                         <h3 class="name">Théo Bernardin</h3>
                         <p class="title">Frontend / Jeu</p>
                         <div class="social">
-                            <a href="https://www.linkedin.com/in/theo-bernardin/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://github.com/TheoBernardin/" target="_blank"><i class="fa fa-github"></i></a>
-                            <a href="https://TheoBernardin.github.io" target="_blank"><i class="fas fa-globe"></i></a>
+                            <a data-toggle="tooltip" href="https://www.linkedin.com/in/theo-bernardin/" data-placement="bottom" title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a data-toggle="tooltip" href="#" data-placement="bottom" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a data-toggle="tooltip" href="https://github.com/TheoBernardin/" data-placement="bottom" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+                            <a data-toggle="tooltip" href="https://TheoBernardin.github.io" data-placement="bottom" title="Sit Web" target="_blank"><i class="fas fa-globe"></i></a>
                         </div>
                     </div>
                 </div>
@@ -59,9 +60,9 @@
                         <h3 class="name">Enzo Masson</h3>
                         <p class="title">Frontend / Backend</p>
                         <div class="social">
-                            <a href="https://www.linkedin.com/in/enzo-masson-102694150/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://github.com/enzomasson25" target="_blank"><i class="fa fa-github"></i></a>
+                            <a data-toggle="tooltip" href="https://www.linkedin.com/in/enzo-masson-102694150/" data-placement="bottom" title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a data-toggle="tooltip" href="#" data-placement="bottom" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a data-toggle="tooltip" href="https://github.com/enzomasson25" data-placement="bottom" title="Github" target="_blank"><i class="fa fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -71,10 +72,10 @@
                         <h3 class="name">Damien Djomby</h3>
                         <p class="title">Backend / Securité</p>
                         <div class="social">
-                            <a href="#https://www.linkedin.com/in/damiendjomby/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="https://twitter.com/nowtryz" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://github.com/nowtryz" target="_blank"><i class="fa fa-github"></i></a>
-                            <a href="https://gitlab.com/nowtryz" target="_blank"><i class="fa fa-gitlab"></i></a>
+                            <a data-toggle="tooltip" href="https://www.linkedin.com/in/damiendjomby/" data-placement="bottom" title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a data-toggle="tooltip" href="https://twitter.com/nowtryz" data-placement="bottom" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a data-toggle="tooltip" href="https://github.com/nowtryz" data-placement="bottom" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+                            <a data-toggle="tooltip" href="https://gitlab.com/nowtryz" data-placement="bottom" title="Gitlab" target="_blank"><i class="fa fa-gitlab"></i></a>
                         </div>
                     </div>
                 </div>
@@ -110,6 +111,19 @@
                             <h4 class="card-title">Page d'incription</h4>
                             <p class="card-text">
                                 <a href="https://www.freeimages.com/photo/quiz-2-1189415">Photo</a> de <a href="/photographer/Avolore-49063">Tory Byrne</a> prise sur <a href="https://freeimages.com/">FreeImages</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-image d-flex align-items-center">
+                            <img class="card-img-top w-100 d-block" src="{{ asset('img/a-propos-bg.jpg') }}">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Page à propos</h4>
+                            <p class="card-text">
+                                <a href="https://burst.shopify.com/photos/designer-coding-client-site?q=programming">Photo</a> prise sur <a href="https://burst.shopify.com/">Brust</a>
                             </p>
                         </div>
                     </div>

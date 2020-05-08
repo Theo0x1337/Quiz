@@ -3,6 +3,10 @@
   margin-bottom: 0;
 }
 
+.project, .team-boxed, .credits {
+  padding: 50px 0;
+}
+
 h2 {
   font-weight: bold;
   margin-bottom: 40px;
@@ -15,6 +19,18 @@ h2 {
     margin-bottom: 25px;
     padding-top: 25px;
     font-size: 24px;
+  }
+
+  .project img {
+    margin: 50px 0;
+  }
+
+  .project img {
+    margin: 50px 0;
+  }
+
+  .credits .card {
+    margin: 25px 0;
   }
 }
 
