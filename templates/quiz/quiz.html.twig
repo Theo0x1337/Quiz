@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Nos Quiz - {{ parent() }}{% endblock %}
+
 {% block additionnal_stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/Card-Group1-Shadow.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
@@ -13,7 +15,7 @@
         <div class="row">
             {% for quiz in quizzes %}
                 <div class="col-lg-4">
-                    <div class="card mb-4 box-shadow rounded-0"><img class="card-img-top w-100 d-block rounded-0" src="{{ asset('uploads/' ~ quiz.thumbnail) }}">
+                    <div class="card mb-4 box-shadow rounded-0"><img class="card-img-top w-100 d-block rounded-0" src="{{ asset('uploads/' ~ quiz.thumbnail) }}" alt="Thumbnail">
                         <div class="card-body">
                             <h4 class="card-title">{{ quiz.nom }}</h4>
                             <h6 class="text-muted card-subtitle mb-2">{{ quiz.sousTitre }}</h6>

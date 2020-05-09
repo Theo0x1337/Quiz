@@ -1,0 +1,65 @@
+{% set current_path = app.request.get('_route') %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% apply spaceless %}
+        <title>
+            {% if title is defined %}
+                {{ title ~ ' - ' }}
+            {% endif %}
+            Administration - Quiz Game
+        </title>
+    {% endapply %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    {% block stylesheets %}
+    {#  Fonts and icons  #}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {#  CSS Files  #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="{{ asset('admin/css/light-bootstrap-dashboard.css?v=2.0.1') }}" rel="stylesheet" />
+        <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet" />
+    {% endblock %}
+</head>
+{% block body %}
+<body>
+<div class="wrapper">
+    {% block sidebar %}
+        {% include "admin/sidebar.html.twig" %}
+    {% endblock %}
+    <div class="main-panel">
+        {% block navbar %}
+            {% include "admin/admin_navbar.html.twig" %}
+        {% endblock %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <nav>
+                    <ul class="footer-menu">
+                        <li><a href="{{ path('accueil') }}">Retour au site</a></li>
+                        <li><a href="https://github.com/TheoBernardin/Quiz">Sources</a></li>
+                    </ul>
+                    <p class="copyright text-center">©2020 Enzo Masson, Théo Bernardin, Damien Djomby</p>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+{% endblock %}
+{% block javascript %}
+    {#  Core JS Files #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    {#  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ #}
+    <script src="{{ asset('admin/js/plugins/bootstrap-switch.js') }}"></script>
+    {# Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc #}
+    <script src="{{ asset('admin/js/light-bootstrap-dashboard.js?v=2.0.1') }}" type="text/javascript"></script>
+    <script type="application/javascript">$(() => $('[data-toggle="tooltip"]').tooltip())</script>
+{% endblock %}
+</html>

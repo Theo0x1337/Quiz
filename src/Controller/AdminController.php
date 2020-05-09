@@ -3,17 +3,48 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/admin", name="admin")
-     */
     public function index()
     {
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+            'controller_name' => 'AdminController::index',
+        ]);
+    }
+
+    public function utilisateurs()
+    {
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController::utilisateurs',
+        ]);
+    }
+
+    public function editerUtilisateur()
+    {
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController::editerUtilisateur',
+        ]);
+    }
+
+    public function quiz()
+    {
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController::quiz',
+        ]);
+    }
+
+    public function editerQuiz()
+    {
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController::editerQuiz',
+        ]);
+    }
+
+    public function propositionsQuiz()
+    {
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController::propositionsQuiz',
         ]);
     }
 }

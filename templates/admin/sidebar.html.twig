@@ -1,0 +1,49 @@
+<div class="sidebar" data-color="orange" data-image="{{ asset('admin/img/sidebar.jpg') }}">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="{{ path('admin') }}" class="simple-text logo-mini">QG</a>
+            <a href="{{ path('admin') }}" class="simple-text logo-normal">Quiz Game</a>
+        </div>
+
+        <div class="user">
+            <div class="photo">
+                <img src="{{ app.user.email|gravatar(d = 'robohash') }}"  alt="Gravatar">
+            </div>
+            <div class="info ">{{ (app.user.prenom ~ ' ' ~ app.user.nom)|title }}</div>
+        </div>
+
+        <ul class="nav">
+            <li class="nav-item {{ current_path == 'admin-utilisateurs' ? 'active' }}">
+                <a class="nav-link" href="{{ path('admin-utilisateurs') }}">
+                    <i class="nc-icon nc-single-02"></i>
+                    <p>Utilisateurs</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#" {{ current_path in ['admin-quiz', 'admin-quiz-propositions'] ? 'aria-expanded="true"' }}>
+                    <i class="nc-icon nc-notes"></i>
+                    <p>
+                        Quiz
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse {{ current_path in ['admin-quiz', 'admin-quiz-propositions'] ? 'show' }}" id="componentsExamples">
+                    <ul class="nav">
+                        <li class="nav-item {{ current_path == 'admin-quiz' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('admin-quiz') }}">
+                                <i class="nc-icon nc-single-copy-04"></i>
+                                <span class="sidebar-normal">Gestion des Quiz</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ current_path == 'admin-quiz-propositions' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('admin-quiz-propositions') }}">
+                                <i class="nc-icon nc-send"></i>
+                                <span class="sidebar-normal">Propositions</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

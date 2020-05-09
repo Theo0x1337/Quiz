@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -25,8 +25,11 @@
                             </ul>
                             <span class="navbar-text actions">
                                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="login" href="{{ path('admin') }}">Administration</a>
+                                    {% endif %}
                                     <a class="login" href="{{ path('deconnexion') }}">Déconexion</a>
-                                    <a class="btn btn-primary action-button" role="button" href="{{ path('profile') }}">Profile</a>
+                                    <a class="btn btn-primary action-button" role="button" href="{{ path('profile') }}">{{ (app.user.prenom ~ ' ' ~ app.user.nom)|title }}</a>
                                 {% else %}
                                     <a class="login" href="{{ path('connexion') }}">Connexion</a>
                                     <a class="btn btn-light action-button" role="button" href="{{ path('inscription') }}">Inscription</a>

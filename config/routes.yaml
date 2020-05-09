@@ -30,6 +30,21 @@ inscription:
 admin:
   path: /admin/
   controller: App\Controller\AdminController::index
+admin-utilisateurs:
+  path: /admin/utilisateurs/
+  controller: App\Controller\AdminController::utilisateurs
+admin-utilisateurs-edit:
+  path: /admin/utilisateurs/{id}/editer/
+  controller: App\Controller\AdminController::editerUtilisateur
+admin-quiz:
+  path: /admin/quiz/
+  controller: App\Controller\AdminController::quiz
+admin-quiz-edit:
+  path: /admin/quiz/{id}/editer/
+  controller: App\Controller\AdminController::editerQuiz
+admin-quiz-propositions:
+  path: /admin/quiz/propositions/
+  controller: App\Controller\AdminController::propositionsQuiz
 
 # Main site
 quiz:
