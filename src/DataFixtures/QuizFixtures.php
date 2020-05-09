@@ -19,8 +19,8 @@ class QuizFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->manager = $manager;
-        $this->addQuizz(self::POPO);
-        $this->addQuizz(self::ANNECY);
+        $this->addPopo();
+        $this->addAnnecy();
         $this->addNaruto();
         $manager->flush();
     }
@@ -57,10 +57,180 @@ class QuizFixtures extends Fixture
                 ['Il à été chassé', false],
                 ['Il à tué ses parents', true],
             ]],
+            ['Quel est le nom du village caché de la pluie ?', [
+                ['Ame', true],
+                ['Konoha', false],
+                ['Oto', false],
+                ['Kiri', false],
+            ]],
+            ['Qui n a pas fait parti du groupe Akatsuki ?', [
+                ['Orochimaru', false],
+                ['Itachi', false],
+                ['Danzo', true],
+                ['Kisame', false],
+            ]],
+            ['Quelle est la particularité d Hidan ?', [
+                ['Il ne peut pas mourrir', true],
+                ['Il est invisible', false],
+                ['Il n est pas un ninja', false],
+                ['Il est le chef d un village caché ', false],
+            ]],
+            ['Quel est le nom de l organisation élite de Konoha ?', [
+                ['Onbu', false],
+                ['Anbu', true],
+                ['Ibu', false],
+                ['Zanbu', false],
+            ]],
+            ['Sur quoi repose la base des pouvoirs dans Naruto ?', [
+                ['Le karma', false],
+                ['Le mantra', false],
+                ['Le chakra', true],
+                ['La salsa', false],
+            ]],
         ];
         $naruto = $this->addQuizz(self::NARUTO);
         foreach ($questions as $question) $this->addQuestion($naruto, $question);
     }
+
+
+    private function addAnnecy() {
+        $questions = [
+            ['Quand a été fondé la ville d Annecy ?', [
+                ['En 50 av JC', true],
+                ['En 845 après JC', false],
+                ['En 1166', false],
+                ['En 1492', false],
+            ]],
+            ['Quel est la superficie d Annecy ?', [
+                ['76,94 km2', false],
+                ['30 km2', false],
+                ['11 km2', false],
+                ['66,94 km2', true],
+            ]],
+            ['Quel est le nombre d entreprise à Annecy en 2017 ?', [
+                ['450', false],
+                ['5000', false],
+                ['11078', true],
+                ['23487', false],
+            ]],
+            ['Quel est le périmètre du lac d Annecy ?', [
+                ['35 km', true],
+                ['28 km', false],
+                ['11 km', false],
+                ['63 km', false],
+            ]],
+            ['Quel est le nombre de touristes à Annecy chaque année ?', [
+                ['100 000', false],
+                ['2,5 millions', true],
+                ['500 000', false],
+                ['1 million', false],
+            ]],
+            ['Quel est le nom de la rivière qui traverse la ville ?', [
+                ['Le fier', false],
+                ['La moselle', false],
+                ['L euron', false],
+                ['Le thiou', true],
+            ]],
+            ['Quel est l alcool local de la ville ?', [
+                ['La chartreuse', false],
+                ['Le génépi', true],
+                ['La megademon', false],
+                ['La bière mont blanc', false],
+            ]],
+            ['La basilique d Annecy est appelée basilique de :', [
+                ['La rédemption', false],
+                ['La création', false],
+                ['La visitation', true],
+                ['La réincarnation', false],
+            ]],
+            ['Quel est le surnom d Annecy ?', [
+                ['La capitale des Alpes', false],
+                ['Le bijou des Alpes', false],
+                ['Le trésor des Alpes', false],
+                ['La Venise des Alpes', true],
+            ]],
+            ['Quel est le nom du célèbre bateau restaurant ?', [
+                ['La grenouille', false],
+                ['La libellule', true],
+                ['La mouche', false],
+                ['L oiseau', false],
+            ]],
+        ];
+        $annecy = $this->addQuizz(self::ANNECY);
+        foreach ($questions as $question) $this->addQuestion($annecy, $question);
+    }
+
+
+
+
+    private function addPopo() {
+        $questions = [
+            ['Quand a été fondé le réseau Polytech ?', [
+                ['En 2001', false],
+                ['En 2010', false],
+                ['EN 2004', true],
+                ['En 1998', false],
+            ]],
+            ['Combien d étudiants sont présents dans le réseau Polytech ?', [
+                ['moins de 10 000', false],
+                ['entre 13 000 et 17 000', true],
+                ['plus de 20 000', false],
+                ['entre 17 000 et 20 000', false],
+            ]],
+            ['Quel évènement est organisé par le réseau Polytech ?', [
+                ['Le beach', true],
+                ['Les 24h de stan', false],
+                ['La cup', false],
+                ['La black', false],
+            ]],
+            ['Combien d écoles font parti du réseau ?', [
+                ['11', false],
+                ['13', false],
+                ['15', true],
+                ['17', false],
+            ]],
+            ['Avant de rejoindre le réseau, quelle école s appelait l ESSTIN ?', [
+                ['Polytech Tours', false],
+                ['Polytech Angers', false],
+                ['Polytech Sorbone', false],
+                ['Polytech Nancy', true],
+            ]],
+            ['Quelle couleur ne fait pas parti du réseau ?', [
+                ['Saumon', false],
+                ['Rose', false],
+                ['Argent', false],
+                ['Cyan', true],
+            ]],
+            ['Quel animal est la mascotte de Polytech Nantes ?', [
+                ['Un singe', false],
+                ['Un lapin', false],
+                ['Un canari', true],
+                ['Une lion', false],
+            ]],
+            ['Quel est le nom de la mascotte précédente (Nantes) ?', [
+                ['Cou-cou', false],
+                ['Cui-cui', true],
+                ['Birdy', false],
+                ['Henry', false],
+            ]],
+            ['Combien de type de PEIP existe il au sein du réseau ?', [
+                ['1', false],
+                ['6', false],
+                ['3', false],
+                ['4', true],
+            ]],
+            ['Quel est la plus vieille école du réseau (date de création) ?', [
+                ['Polytech Nancy', true],
+                ['Polytech Clermont', false],
+                ['Polytech Nice', false],
+                ['Polytech Grenoble', false],
+            ]],
+        ];
+        $popo = $this->addQuizz(self::POPO);
+        foreach ($questions as $question) $this->addQuestion($popo, $question);
+    }
+
+
 
     private function addQuizz(array $quiz) : Quizz
     {
