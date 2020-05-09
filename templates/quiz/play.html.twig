@@ -32,7 +32,8 @@
                 input: 'text',
                 confirmButtonText: 'Next &rarr;',
                 showCancelButton: true,
-                progressSteps: ['1', '2', '3','4','5']
+                progressSteps:['1', '2', '3','4','5','6','7','8','9','10'],
+                width:'800px'
             }).queue([
                 {
                     title: q[0].text,
@@ -53,6 +54,26 @@
                 {
                     title: q[4].text,
                     text: r[16].text+' - '+ r[17].text+' - '+r[18].text+' - '+r[19].text
+                },
+                {
+                    title: q[5].text,
+                    text: r[20].text+' - '+ r[21].text+' - '+r[22].text+' - '+r[23].text
+                },
+                {
+                    title: q[6].text,
+                    text: r[24].text+' - '+ r[25].text+' - '+r[26].text+' - '+r[27].text
+                },
+                {
+                    title: q[7].text,
+                    text: r[28].text+' - '+ r[29].text+' - '+r[30].text+' - '+r[31].text
+                },
+                {
+                    title: q[8].text,
+                    text: r[32].text+' - '+ r[33].text+' - '+r[34].text+' - '+r[35].text
+                },
+                {
+                    title: q[9].text,
+                    text: r[36].text+' - '+ r[37].text+' - '+r[38].text+' - '+r[39].text
                 }
             ]).then((result) => {
                 if (result.value) {
@@ -93,7 +114,7 @@
 
                     console.log(nbBonneRep/bonneRep.length);
 
-                    if (nbBonneRep >= 2.5){
+                    if (nbBonneRep >= 5){
                         document.getElementById("img").src = "{{ asset('img/goodjob.png') }}";
                     }else{
                         document.getElementById("img").src = "{{ asset('img/badjob.png') }}";
