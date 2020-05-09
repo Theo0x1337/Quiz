@@ -12,3 +12,7 @@
 .container{
     text-align: center;
 }
+
+.swal2-progress-steps{
+    width:100% !important;
+}
