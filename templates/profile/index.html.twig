@@ -1,20 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'profile/base.html.twig' %}
 
-{% block title %}{{ (app.user.prenom ~ ' ' ~ app.user.nom)|title }} - {{ parent() }}{% endblock %}
+{% block profile_content %}
+    <h2 class="card-title">Profil</h2>
 
-{% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Users/damie/OneDrive/Documents/Polytech Annecy/INFO642 Web/Quiz/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Users/damie/OneDrive/Documents/Polytech Annecy/INFO642 Web/Quiz/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <form method="post">
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="surname">Prénom</label>
+                <input id="surname" class="form-control" value="{{ app.user.prenom }}">
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="name">Nom</label>
+                <input id="name" class="form-control" value="{{ app.user.nom }}">
+            </div>
+            <div class="form-group  col">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" value="{{ app.user.email }}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+    </form>
 {% endblock %}

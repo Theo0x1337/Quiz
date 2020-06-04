@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ (app.user.prenom ~ ' ' ~ app.user.nom)|title }} - {{ parent() }}{% endblock %}
+
+{% block additionnal_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="profile-card col-lg-3 col-md-4">
+                <div class="card">
+                    {# gravatar est une fonction que nous avons créer (App\Twig\GravatarExtension) #}
+                    <img class="card-img-top" src="{{ app.user.email|gravatar(d = 'robohash') }}" alt="Profil image">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            {{ (app.user.prenom ~ ' ' ~ app.user.nom)|title }}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                    <span class="badge badge-pill badge-info">admin</span>
+                            {% endif %}
+                        </h2>
+
+                        <div class="score-container d-flex justify-content-center align-items-center">
+                            <div class="text-uppercase font-weight-light text-secondary">score</div>
+                            <div class="score font-weight-bold text-primary">{{ app.user.score }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a
+                                        class="nav-link {{ (app.request.attributes.get('_route') == 'profile') ? 'active' : '' }}"
+                                        href="{{ path('profile') }}"
+                                >Profil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                        class="nav-link {{ (app.request.attributes.get('_route') == 'profile_scores') ? 'active' : '' }}"
+                                        href="{{ path('profile_scores') }}"
+                                >Scores</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        {% block profile_content %}
+                            merde
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

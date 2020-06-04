@@ -12,7 +12,7 @@
                     <div class="jumbotron carousel-hero" style="background-image: url('{{ asset('uploads/' ~ quiz.image) }}');">
                         <h1 class="hero-title">{{ quiz.nom }}</h1>
                         <p class="hero-subtitle">{{ quiz.sousTitre }}</p>
-                        <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Participer à ce quiz</a></p>
+                        <p><a class="btn btn-primary btn-lg hero-button" role="button" href="{{ path('play',{'id':quiz.id}) }}">Participer à ce quiz</a></p>
                     </div>
                 </div>
             {% endfor %}

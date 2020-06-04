@@ -1,0 +1,10 @@
+.score {
+    font-size: 30px;
+}
+
+.profile-card {
+    margin-bottom: 40px;
+}
+.score-container * {
+    margin: 10px;
+}

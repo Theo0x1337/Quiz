@@ -12,7 +12,7 @@ class ProfileController extends AbstractController
      */
     public function index()
     {
-        return $this->render('profile/index.html.twig', [
+        return $this->render('profile/base.html.twig', [
             'controller_name' => 'ProfileController',
         ]);
     }
